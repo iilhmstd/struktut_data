@@ -1,8 +1,8 @@
-program DataMahasiswaGabungan;
+program laporan_penilaian;
 uses crt;
 
 type
-  TMahasiswa = record
+  DMahasiswa = record
     NIM   : string[15];
     Nama  : string[20];
     Tugas : real;
@@ -14,13 +14,13 @@ type
 
   PMhs = ^Node;
   Node = record
-    data : TMahasiswa;
+    data : DMahasiswa;
     no   : integer;
     next : PMhs;
   end;
 
 var
-  Mhs  : array[1..5] of TMahasiswa;   { Array untuk input data }
+  Mhs  : array[1..6] of DMahasiswa; 
   head, tail, baru : PMhs;
   n, i : integer;
 
@@ -35,17 +35,23 @@ end;
 
 begin
   clrscr;
-  write('Masukkan jumlah mahasiswa: '); readln(n);
+  write('Masukkan jumlah mahasiswa: '); 
+  readln(n);
 
-  { Input data ke array }
+
   for i := 1 to n do
   begin
     writeln('Mahasiswa ke-', i);
-    write('NIM   : '); readln(Mhs[i].NIM);
-    write('Nama  : '); readln(Mhs[i].Nama);
-    write('Tugas : '); readln(Mhs[i].Tugas);
-    write('UTS   : '); readln(Mhs[i].UTS);
-    write('UAS   : '); readln(Mhs[i].UAS);
+    write('NIM   : '); 
+    readln(Mhs[i].NIM);
+    write('Nama  : '); 
+    readln(Mhs[i].Nama);
+    write('Tugas : '); 
+    readln(Mhs[i].Tugas);
+    write('UTS   : '); 
+    readln(Mhs[i].UTS);
+    write('UAS   : '); 
+    readln(Mhs[i].UAS);
 
     Mhs[i].NA := (Mhs[i].Tugas + Mhs[i].UTS + Mhs[i].UAS) / 3;
     Mhs[i].Grade := HitungGrade(Mhs[i].NA);
@@ -53,7 +59,6 @@ begin
     writeln;
   end;
 
-  { Pindahkan dari array ke linked list }
   head := nil; tail := nil;
   for i := 1 to n do
   begin
@@ -74,11 +79,9 @@ begin
     end;
   end;
 
-  { Tampilkan data lewat linked list }
-  clrscr;
-  writeln('-------------------------------------------------------------------');
-  writeln('NO   NIM           NAMA         TUGAS   UTS   UAS   NA     GRADE');
-  writeln('-------------------------------------------------------------------');
+  writeln('=======================================================================');
+  writeln('NO      NIM            NAMA    TUGAS     UTS    UAS     NA   GRADE');
+  writeln('=======================================================================');
 
   baru := head;
   while baru <> nil do
@@ -94,6 +97,6 @@ begin
     baru := baru^.next;
   end;
 
-  writeln('-------------------------------------------------------------------');
+
   readln;
 end.
