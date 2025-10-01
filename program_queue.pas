@@ -89,6 +89,10 @@ begin
         writeln('~~ Tekan ENTER untuk melanjutkan ~~');
         readln();
         end;
+      5: begin 
+        clrscr;
+        front := 0; rear := 0; 
+        end;
     end;
 
     writeln;
