@@ -29,7 +29,7 @@ begin
     writeln('~~ PIRING KOSONG!!!! ~~')
   else
   begin
-    writeln('_________________________________________________________')
+    writeln('_________________________________________________________');
     writeln('piring | ', stack[top], ' | telah diambil dari tumpukan.');
     top := top - 1;    
     
