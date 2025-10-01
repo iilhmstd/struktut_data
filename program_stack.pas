@@ -2,7 +2,7 @@ program program_simulasi_stack;
 uses crt;
 
 const
-  MAX = 5; 
+  MAX = 4; 
 var
   stack: array[1..MAX] of integer;
   top: integer; 
@@ -11,25 +11,27 @@ var
 procedure push(x: integer);
 begin
   if top = MAX then
-    writeln('Stack penuh!')
+    writeln('~~ TUMPUKKAN PIRING PENUH!!! ~~')
   else
   begin
     top := top + 1;       
     stack[top] := x;   
-    writeln('====================================');
-    writeln(x, ' berhasil dimasukkan ke stack.');
-    writeln('====================================');
+    writeln('===========================================');
+    writeln(x, ' berhasil dimasukkan ke tumpukan piring.');
+    writeln('===========================================');
+    writeln(x, ' ~~ tekan ENTER untuk melanjutkan ~~');
   end;
 end;
 
 procedure pop;
 begin
   if top = 0 then
-    writeln('Stack kosong!')
+    writeln('~~ PIRING KOSONG!!!! ~~')
   else
   begin
-    writeln(stack[top], ' dikeluarkan dari stack.');
-    top := top - 1;      
+    writeln('piring | ', stack[top], ' | telah diambil dari tumpukan.');
+    top := top - 1;    
+    
   end;
 end;
 
@@ -38,7 +40,7 @@ var
   i: integer;
 begin
   if top = 0 then
-    writeln('Stack kosong!')
+    writeln('~~ PIRING KOSONG!!!! ~~')
   else
   begin
     writeln('Isi stack (atas ke bawah):');
@@ -50,13 +52,16 @@ end;
 begin
   clrscr;
   top := 0; 
-
   repeat
-    writeln('========= program simulasi stack ========');
-    writeln('======== MENU PROGRAM =========');
+  clrscr;  
+    writeln('=========================================');
+    writeln('========= Program Simulasi Stack ========');
+    writeln('=========================================');
+    writeln('');
+    writeln('||||||||||||| MENU PROGRAM ||||||||||||||');
     writeln('1. Push ');
     writeln('2. Pop ');
-    writeln('3. Lihat isi stack');
+    writeln('3. Lihat isi tumpukan piring');
     writeln('4. Keluar');
     write('Pilih menu: '); readln(pilihan);
 
@@ -64,20 +69,26 @@ begin
     1: begin
         write('Masukkan angka: '); readln(angka);
         push(angka);
+        readln();
         end;
     2: begin
         clrscr;
         pop;
+        readln();
         end;
     3: begin
         clrscr;
         tampilkan;
+        writeln('~~ Tekan ENTER untuk melanjutkan ~~');
+        readln();
         end;
     end;
 
     writeln;
   until pilihan = 4;
 
-  writeln('Program selesai.');
+  writeln('=============================');
+  writeln('====== Program selesai ======');
+  writeln('=============================');
   readln;
 end.

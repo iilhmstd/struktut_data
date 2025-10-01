@@ -1,49 +1,51 @@
-program QueueSederhana;
+program Program_simulasi_queue;
 uses crt;
 
 const
-  MAX = 7;   
+  MAX = 5;   
 var
   queue: array[1..MAX] of integer; 
   front, rear: integer; 
   pilihan, angka: integer;
 
-
 procedure enqueue(x: integer);
 begin
   if rear = MAX then
-    writeln('Queue penuh!')
+    writeln('~~ ANTRIAN PENUH!!! ~~')
   else
   begin
     if front = 0 then front := 1; 
     rear := rear + 1;            
-    queue[rear] := x;         
-    writeln(x, ' berhasil dimasukkan ke queue.');
+    queue[rear] := x;       
+    clrscr;  
+    writeln('===========================================');
+    writeln(x, ' berhasil tambahkan ke dalam antrian .');
+    writeln('===========================================');
+    writeln(x, ' ~~ tekan ENTER untuk melanjutkan ~~');
   end;
 end;
-
 
 procedure dequeue;
 begin
   if (front = 0) or (front > rear) then
   begin
-    writeln('Queue kosong!');
+    writeln('~~ ANTRIAN KOSONG!!!! ~~');
     front := 0; rear := 0;  
   end
   else
   begin
-    writeln(queue[front], ' dikeluarkan dari queue.');
+    writeln('');
+    writeln('memanggil antrian ke- 'queue[front]);
     front := front + 1;    
   end;
 end;
-
 
 procedure tampilkan;
 var
   i: integer;
 begin
   if (front = 0) or (front > rear) then
-    writeln('Queue kosong!')
+   writeln('~~ ANTRIAN KOSONG!!!! ~~');
   else
   begin
     writeln('Isi queue (depan ke belakang):');
@@ -58,10 +60,14 @@ begin
   front := 0; rear := 0;
 
   repeat
-    writeln('=== MENU QUEUE ===');
-    writeln('1. Enqueue (Masukkan data)');
-    writeln('2. Dequeue (Keluarkan data)');
-    writeln('3. Lihat isi queue');
+    writeln('=========================================');
+    writeln('========= Program Simulasi Queue ========');
+    writeln('=========================================');
+    writeln('');
+    writeln('||||||||||||| MENU PROGRAM ||||||||||||||');
+    writeln('1. Enqueue');
+    writeln('2. Dequeue ');
+    writeln('3. Lihat isi antrian');
     writeln('4. Keluar');
     write('Pilih menu: '); readln(pilihan);
 
@@ -69,14 +75,25 @@ begin
       1: begin
            write('Masukkan angka: '); readln(angka);
            enqueue(angka);
+           readln();
          end;
-      2: dequeue;
-      3: tampilkan;
+      2: begin
+          clrscr;
+          dequeue;
+          readln();
+         end;
+      3: begin 
+        clrscr;
+        tampilkan;
+        writeln('~~ Tekan ENTER untuk melanjutkan ~~');
+        readln();
+        end;
     end;
 
     writeln;
   until pilihan = 4;
-
-  writeln('Program selesai.');
+  writeln('=============================');
+  writeln('====== Program selesai ======');
+  writeln('=============================');
   readln;
 end.
