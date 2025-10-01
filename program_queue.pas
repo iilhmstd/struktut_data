@@ -21,7 +21,7 @@ begin
     writeln('===========================================');
     writeln(x, ' berhasil tambahkan ke dalam antrian .');
     writeln('===========================================');
-    writeln(x, ' ~~ tekan ENTER untuk melanjutkan ~~');
+    writeln(' ~~ tekan ENTER untuk melanjutkan ~~');
   end;
 end;
 
@@ -34,8 +34,8 @@ begin
   end
   else
   begin
-    writeln('');
-    writeln('memanggil antrian ke- 'queue[front]);
+    writeln('____________________________________');
+    writeln('memanggil antrian ke- ', queue[front]);
     front := front + 1;    
   end;
 end;
@@ -45,10 +45,10 @@ var
   i: integer;
 begin
   if (front = 0) or (front > rear) then
-   writeln('~~ ANTRIAN KOSONG!!!! ~~');
+   writeln('~~ ANTRIAN KOSONG!!!! ~~')
   else
   begin
-    writeln('Isi queue (depan ke belakang):');
+    writeln('antrian (depan ke belakang):');
     for i := front to rear do
       write(queue[i], ' ');
     writeln;
@@ -60,6 +60,7 @@ begin
   front := 0; rear := 0;
 
   repeat
+  clrscr;
     writeln('=========================================');
     writeln('========= Program Simulasi Queue ========');
     writeln('=========================================');
@@ -67,7 +68,7 @@ begin
     writeln('||||||||||||| MENU PROGRAM ||||||||||||||');
     writeln('1. Enqueue');
     writeln('2. Dequeue ');
-    writeln('3. Lihat isi antrian');
+    writeln('3. Lihat antrian');
     writeln('4. Keluar');
     write('Pilih menu: '); readln(pilihan);
 

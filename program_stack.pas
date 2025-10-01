@@ -19,7 +19,7 @@ begin
     writeln('===========================================');
     writeln(x, ' berhasil dimasukkan ke tumpukan piring.');
     writeln('===========================================');
-    writeln(x, ' ~~ tekan ENTER untuk melanjutkan ~~');
+    writeln( ' ~~ tekan ENTER untuk melanjutkan ~~');
   end;
 end;
 
@@ -29,6 +29,7 @@ begin
     writeln('~~ PIRING KOSONG!!!! ~~')
   else
   begin
+    writeln('_________________________________________________________')
     writeln('piring | ', stack[top], ' | telah diambil dari tumpukan.');
     top := top - 1;    
     
@@ -43,7 +44,7 @@ begin
     writeln('~~ PIRING KOSONG!!!! ~~')
   else
   begin
-    writeln('Isi stack (atas ke bawah):');
+    writeln('tumpukkan piring (atas ke bawah):');
     for i := top downto 1 do
       writeln('| ', stack[i], ' |');
   end;
@@ -61,7 +62,7 @@ begin
     writeln('||||||||||||| MENU PROGRAM ||||||||||||||');
     writeln('1. Push ');
     writeln('2. Pop ');
-    writeln('3. Lihat isi tumpukan piring');
+    writeln('3. Lihat tumpukan piring');
     writeln('4. Keluar');
     write('Pilih menu: '); readln(pilihan);
 
